@@ -1,6 +1,12 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title": "Grocery list",
+        "text": "Bananas, toilet paper, detergent, cat food.... am I forgetting something??",
+        "id": "dbc5"
+    },
+    {
+        "title": "Sample Note",
+        "text": "note note note note\n",
+        "id": "96dc"
     }
 ]
