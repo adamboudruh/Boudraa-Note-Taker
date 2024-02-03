@@ -15,13 +15,13 @@ const readAndAppend = (content, file) => {
   });
 };
 
-const writeToFile = (destination, content) =>
+const writeToFile = (destination, content) => //only used within this function, so doesn't need to be exported
   fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
     err ? console.error(err) : console.info(`\nData written to ${destination}`)
 );
 
 const deleteFromFile = (id, file) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => { //returns a promise so that I can better return as much info as possible and determine whether a 404 or 500 error occurred
       fs.readFile(file, 'utf8', (err, data) => {
         if (err) {
           console.error(err);

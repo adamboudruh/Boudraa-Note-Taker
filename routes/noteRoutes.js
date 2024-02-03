@@ -19,10 +19,10 @@ app.post('/notes', (req, res) => {
         const newNote = {
             title,
             text,
-            id: uuid().toLowerCase(),
+            id: uuid().toLowerCase(), //Lower case for conformity, uuid helper function is used to make sure that each note has a unique id that can be used to delete it or single it out
         };
 
-        readAndAppend(newNote, db);
+        readAndAppend(newNote, db); //This treats the JSON like an array and just pushes the data into that array rather than just appending it to the end
         res.status(200).json(newNote);
     }
     else res.status(500).json({errorMessage: 'Error in posting new note'})
@@ -34,9 +34,9 @@ app.delete('/notes/:id', (req, res) => {
     deleteFromFile(id, db)
         .then(resolve => {
             if (resolve) res.json({ message: "Note found and deleted" })
-            else res.status(404).json({ message: "Error: note with provided ID not found" });
+            else res.status(404).json({ message: "Error: note with provided ID not found" }); //If resolve was false, that means id wasn't found
         })
-        .catch(reject => res.status(500).json(reject));
+        .catch(reject => res.status(500).json(reject)); //If rejected, then the function will return the error message in the reject object
 });
 
 module.exports = app;
